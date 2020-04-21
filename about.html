@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="app.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/307c1d5577.js" crossorigin="anonymous" defer></script>
+    <script src="script.js" defer></script>
+    <title>About</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="nav-menu" onclick="toggleNavMenu()">
+            <i class="fas fa-bars fa-3x"></i>
+        </div>
+        <nav class="nav">
+            <a href="http://127.0.0.1:5500/index.html">
+                <img src="./images/pokemon-title.png" alt="Pokemon logo" class="logo">
+            </a>
+            <div class="nav-links">
+                <a href="http://127.0.0.1:5500/index.html">Pokedex</a>
+                <a href="http://127.0.0.1:5500/about.html">About</a>
+            </div>
+        </nav>
+        <div class="about">
+            <p>This is the about page for this pokedex application.</p>
+            <p>Pokedex was made using html, css and vanilla javascript.</p>
+        </div>
+        <footer class="footer">
+            <p>An open source site made with help from Pokeapi.</p>
+            <p>Pokémon and All Respective Names are Trademark & &copy; of Nintendo, Game Freak, and The Pokémon Company.</p>
+            <br>
+            <p>&copy; Pokedex app <span id="current-year"></span></p>
+        </footer>
+    </div>
+</body>
+</html>

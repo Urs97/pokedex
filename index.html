@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="app.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/307c1d5577.js" crossorigin="anonymous" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>    
+    <div class="wrapper">
+        <div class="nav-menu" onclick="toggleNavMenu()">
+            <i class="fas fa-bars fa-3x"></i>
+        </div>
+        <nav class="nav">
+            <a href="http://127.0.0.1:5500/index.html">
+                <img src="./images/pokemon-title.png" alt="Pokemon logo" class="logo">
+            </a>
+            <div class="nav-links">
+                <a href="http://127.0.0.1:5500/index.html">Pokedex</a>
+                <a href="http://127.0.0.1:5500/about.html">About</a>
+            </div>
+        </nav>
+        <section class="form-section">
+            <form class="filter-form">
+                <input type="text" for="submit" id="filter-input" placeholder="Filter Pokemon">
+                <button type="submit" id="submit" onClick="filterPokemon()"><i class="fas fa-search"></i></button>
+            </form>
+            <form class="select-form">
+                <label for="select-generation">Select region:</label>
+                <select name="select Generation" id="select-generation" onchange="selectGeneration()">
+                    <option value="gen-1">Kanto / Generation 1</option>
+                    <option value="gen-2">Johto / Generation 2</option>
+                    <option value="gen-3">Hoenn / Generation 3</option>
+                    <option value="gen-4">Sinnoh / Generation 4</option>
+                    <option value="gen-5">Unova / Generation 5</option>
+                    <option value="gen-6">Kalos / Generation 6</option>
+                    <option value="gen-7">Alola / Generation 7</option>
+                </select>
+            </form>
+        </section>
+        <main id="pokedex"></main>
+        <footer class="footer">
+            <p>An open source site made with help from Pokeapi.</p>
+            <p>Pokémon and all respective names are trademark & &copy; of Nintendo, Game Freak, and The Pokémon Company.</p>
+            <br>
+            <p>&copy; Pokedex app <span id="current-year"></span></p>
+        </footer>
+    </div>
+</body>
+</html>
