@@ -519,6 +519,12 @@ body {
         border-radius: none;
         box-shadow: none;
         overflow: scroll;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .popup-nav {
+        order: 2;
     }
 
     .popup-btn {
@@ -534,7 +540,8 @@ body {
         grid-template-columns: 1fr;
         row-gap: 2em;
         padding: 0 1em;
-        padding-top: 6em;
+        padding-bottom: 3em;
+        order: 1;
     }
 
     .popup-id {
@@ -577,7 +584,6 @@ body {
 
     .popup-grid {
         row-gap: 0;
-        padding-top: 0;
     }
 
     .popup-images {
@@ -605,6 +611,7 @@ body {
 @media (max-width: 500px) {
     .popup-grid {
         padding: 0;
+        padding-bottom: 3em;
     }
 
     .popup-images {
