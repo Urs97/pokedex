@@ -516,7 +516,7 @@ body {
         width: 100vw;
         height: 100%;
         border: none;
-        border-radius: none;
+        border-radius: 0;
         box-shadow: none;
         overflow: scroll;
         display: flex;
@@ -540,13 +540,14 @@ body {
         grid-template-columns: 1fr;
         row-gap: 2em;
         padding: 0 1em;
-        padding-bottom: 3em;
+        padding-bottom: 5em;
         order: 1;
     }
 
     .popup-id {
         margin: 0;
         padding: 0.5em;
+        padding-top: 2.5em;
     }
 
     .popup-title {
@@ -559,12 +560,13 @@ body {
     
     .popup-images {
         padding: 1em;
+        margin-bottom: 3em;
     }
 
     .popup-card {
         font-size: 1.5em;
         margin-top: 0.5em;
-        border-radius: none;
+        border-radius: 0;
     }
     
     .popup-card-stats {
@@ -581,11 +583,11 @@ body {
     }
 
     .popup-left-btn {
-        border-radius: none;
+        border-radius: 0;
     }
     
     .popup-right-btn {
-        border-radius: none;
+        border-radius: 0;
     }
 }
 
