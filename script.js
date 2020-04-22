@@ -1,6 +1,6 @@
 const pokedex = document.querySelector('#pokedex');
 
-let pokemonGeneration = [1, 5];
+let pokemonGeneration = [1, 151];
 const cache = {};
 
 const fetchPokemon = async (gen) => {
