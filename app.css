@@ -564,6 +564,7 @@ body {
     .popup-card {
         font-size: 1.5em;
         margin-top: 0.5em;
+        border-radius: none;
     }
     
     .popup-card-stats {
@@ -577,6 +578,14 @@ body {
 
     .popup .double-type {
         font-size: 1.5rem;
+    }
+
+    .popup-left-btn {
+        border-radius: none;
+    }
+    
+    .popup-right-btn {
+        border-radius: none;
     }
 }
 
