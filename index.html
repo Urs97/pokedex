@@ -26,12 +26,12 @@
         </nav>
         <section class="form-section">
             <form class="filter-form">
-                <input type="text" for="submit" id="filter-input" placeholder="Filter Pokemon">
-                <button type="submit" id="submit" onClick="filterPokemon()"><i class="fas fa-search"></i></button>
+                <input type="text" for="filter-btn" id="filter-input" placeholder="Filter Pokemon">
+                <button id="filter-btn" onclick="filterPokemon()"><i class="fas fa-search"></i></button>
             </form>
             <form class="select-form">
                 <label for="select-generation">Select region:</label>
-                <select name="select Generation" id="select-generation" onchange="selectGeneration()">
+                <select name="select generation" id="select-generation" onchange="selectGeneration()">
                     <option value="gen-1">Kanto / Generation 1</option>
                     <option value="gen-2">Johto / Generation 2</option>
                     <option value="gen-3">Hoenn / Generation 3</option>

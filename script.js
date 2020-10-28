@@ -3,14 +3,15 @@ const pokedex = document.querySelector('#pokedex');
 let pokemonGeneration = [1, 151];
 const cache = {};
 
-const fetchPokemon = async (gen) => {
+const fetchPokemon = async (generation) => {
     pokedex.innerHTML = `<div class="loader"></div>`;
 
     const urls = [];
-    for(let i = gen[0]; i <= gen[1]; i++) {
+    for(let i = generation[0]; i <= generation[1]; i++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
         urls.push(url);
     }
+
     const data = await Promise.all((urls)
         .map(url => fetch(url)
         .then(response => response.json())));
@@ -32,7 +33,7 @@ const displayPokemon = (pokemon) => {
     pokedex.innerHTML = "";
 
     pokemon.map(p => pokedex.innerHTML +=
-        `<button class="card" onClick="fetchPokemonDetails(${p.id})">
+        `<button class="card" onclick="fetchPokemonDetails(${p.id})">
             <h2 class="card-name">${p.name}</h2>
             <p>${displayId(p.id)}</p>
             <img class="img" src="${p.image}" alt="Pokemon front"></>
@@ -85,83 +86,44 @@ const fetchPokemonDetails = async (id) => {
 
 const displayPokemonDetails = (p) => {
     pokedex.innerHTML += 
-        `<div id="popup-background" class="close" onClick="closePokemonDetails()">
-            <div class="popup">
-                <div class="popup-nav">
-                    ${displayPrevPokemon(p.id, p.prev_id, p.prev_name, p.prev_type)}
-                    <button class="popup-close-button close">X</button>
-                    ${displayNextPokemon(p.id, p.next_id, p.next_name, p.next_type)}
+        `<div id="popup-background" onclick="closePokemonDetails()" />
+        <div class="popup">
+            <div class="popup-nav">
+                ${displayPrevPokemon(p.id, p.prev_id, p.prev_name, p.prev_type)}
+                <button class="popup-close-button">X</button>
+                ${displayNextPokemon(p.id, p.next_id, p.next_name, p.next_type)}
+            </div>
+            <div class="popup-grid">
+                <h1 class="popup-id">${displayId(p.id)}</h1>
+                <div class="popup-title">
+                    <h1>${p.name}</h1>
+                    ${displayType(p.typeNumber, p.type)}
                 </div>
-                <div class="popup-grid">
-                    <h1 class="popup-id">${displayId(p.id)}</h1>
-                    <div class="popup-title">
-                        <h1>${p.name}</h1>
-                        ${displayType(p.typeNumber, p.type)}
-                    </div>
-                    <div class="popup-images">
-                        <img class="img" src="${p.image_front}" alt="Pokemon front"></>
-                        <img class="img" src="${p.image_back}" alt="Pokemon back"></>
-                        <img class="img" src="${p.shiny_image_front}" alt="Pokemon shiny front"></>
-                        <img class="img" src="${p.shiny_image_back}" alt="Pokemon shiny back"></>
-                    </div>
-                    <div class="popup-card">
-                        <p>${displayText(p.description, 'description')}</p>
-                        <div class="popup-card-stats">
-                            <p>Type: ${displayText(p.short_description, 'category')}</p>
-                            <p>Height: ${displayHeight(p.height)}</p>
-                            <p>Region: ${displayRegion(p.generation)}</p>
-                            <p>Weight: ${displayWeight(p.weight)}</p>
-                        </div>
+                <div class="popup-images">
+                    <img class="img" src="${p.image_front}" alt="Pokemon front"></>
+                    <img class="img" src="${p.image_back}" alt="Pokemon back"></>
+                    <img class="img" src="${p.shiny_image_front}" alt="Pokemon shiny front"></>
+                    <img class="img" src="${p.shiny_image_back}" alt="Pokemon shiny back"></>
+                </div>
+                <div class="popup-card">
+                    <p>${displayText(p.description, 'description')}</p>
+                    <div class="popup-card-stats">
+                        <p>Type: ${displayText(p.short_description, 'genus')}</p>
+                        <p>Height: ${displayHeight(p.height)}</p>
+                        <p>Region: ${displayRegion(p.generation)}</p>
+                        <p>Weight: ${displayWeight(p.weight)}</p>
                     </div>
                 </div>
             </div>
-         </div>`
+        </div>
+        `
 }
 
-const fetchFromDetails = (id) => {
-    const event = this.event;
-    const popupBackground = document.querySelector('#popup-background');
-
-    event.target.parentElement.parentElement.parentElement.parentElement.removeChild(popupBackground);
-
+const fetchFromDetails = (id, state) => {
     setTimeout( () => {
-        if(event.target.classList.contains("popup-left-btn") && id > 1) fetchPokemonDetails(id-1);
-        if(event.target.classList.contains("popup-right-btn") && id < 807) fetchPokemonDetails(id+1);
+        if(state === 'prev') fetchPokemonDetails(id-1);
+        if(state === 'next') fetchPokemonDetails(id+1);
         }, 400);
-    
-}
-
-const filterPokemon = () => {
-    event.preventDefault();
-    
-    const input = document.querySelector('#filter-input');
-    const cardNames = document.querySelectorAll('.card-name');
-    const cardNamesArray = [... cardNames];
-
-    cardNamesArray.map(name => name.parentElement.style.display = "block");
-
-    cardNamesArray
-        .filter(name => !name.innerHTML.includes(input.value))
-        .map(name => name.parentElement.style.display = "none");
-
-    input.value = "";
-}
-
-const selectGeneration = () => {
-    const select = document.querySelector('#select-generation');
-
-    if(select.value === "gen-1") reFetchPokemon([1,151]);
-    if(select.value === "gen-2") reFetchPokemon([152,251]);
-    if(select.value === "gen-3") reFetchPokemon([252,386]); 
-    if(select.value === "gen-4") reFetchPokemon([387,493]); 
-    if(select.value === "gen-5") reFetchPokemon([494,649]);
-    if(select.value === "gen-6") reFetchPokemon([650,721]);
-    if(select.value === "gen-7") reFetchPokemon([722,807]);
-}
-
-const reFetchPokemon = (gen) => {
-    pokedex.innerHTML = "";
-    fetchPokemon(gen);
 }
 
 const displayPrevPokemon = (id, prevId, prevName, prevType) => {
@@ -169,7 +131,7 @@ const displayPrevPokemon = (id, prevId, prevName, prevType) => {
 
     else {
         return `<button class="popup-btn popup-left-btn ${prevType}"
-                onClick="fetchFromDetails(${id})">
+                    onclick="fetchFromDetails(${id}, 'prev')">
                     <span>${displayId(prevId)}</span>
                     <span>${prevName}</span>
                 </button>`;
@@ -181,17 +143,23 @@ const displayNextPokemon = (id, nextId, nextName, nextType) => {
 
     else {
         return `<button class="popup-btn popup-right-btn ${nextType}"               
-                onClick="fetchFromDetails(${id})">
+                    onclick="fetchFromDetails(${id}, 'next')">
                     <span>${displayId(nextId)}</span>
                     <span>${nextName}</span>
                 </button>`;
     }
 }
 
+const closePokemonDetails = () => {
+    const popupBackground = document.querySelector('#popup-background');
+    const popup = document.querySelector('.popup');
+
+    popup.remove();
+    popupBackground.remove();
+}
+
 const displayType = (typeNumber, type) => {
-    if(typeNumber === 1) {
-        return `<p class="type ${type}">${type}</p>`;
-    }
+    if(typeNumber === 1) return `<p class="type ${type}">${type}</p>`;
     
     if(typeNumber === 2) {
         const arr = type.split(" ");
@@ -213,12 +181,8 @@ const displayId = (id) => {
 const displayText = (entries, text) => {
     const entry = entries.filter(entry => entry.language.name === "en");
 
-    if(text === 'category') {
-        return `${entry[0].genus}`;
-    }
-    if(text === 'description') {
-        return `${entry[0].flavor_text}`
-    }
+    if(text === 'genus') return `${entry[0].genus}`;
+    if(text === 'description') return `${entry[0].flavor_text}`;
 }
 
 const displayHeight = (height) => {
@@ -226,7 +190,6 @@ const displayHeight = (height) => {
     const realFeet = ((m * 39.3701) / 12);
     const feet = Math.floor(realFeet);
     const inches = Math.round((realFeet - feet) * 12);
-    
     return `${m} m / ${feet}' ${inches}''`;
 }
 
@@ -246,20 +209,37 @@ const displayRegion = (gen) => {
     if(gen === "generation-vii") return "Alola";
 }
 
-const closePokemonDetails = () => {
-    const popupBackground = document.querySelector('#popup-background');
-    const outside = event.target.id === 'popup-background';
-
-    if (event.target.classList.contains("close")) {
-        return outside ? event.target.parentElement.removeChild(popupBackground) 
-        : event.target.parentElement.parentElement.parentElement.parentElement.removeChild(popupBackground);
-    } return;
-}
-
 const toggleNavMenu = () => {
     const navLinks = document.querySelector('.nav-links');
-    
     navLinks.classList.toggle('show');
+}
+
+const filterPokemon = () => {
+    event.preventDefault();
+    
+    const input = document.querySelector('#filter-input');
+    const cardNames = document.querySelectorAll('.card-name');
+    const cardNamesArray = [... cardNames];
+
+    cardNamesArray.map(name => name.parentElement.style.display = "block");
+
+    cardNamesArray
+        .filter(name => !name.innerHTML.includes(input.value))
+        .map(name => name.parentElement.style.display = "none");
+
+    input.value = "";
+}
+
+const selectGeneration = () => {
+    const select = document.querySelector('#select-generation');
+
+    if(select.value === "gen-1") fetchPokemon([1,151]);
+    if(select.value === "gen-2") fetchPokemon([152,251]);
+    if(select.value === "gen-3") fetchPokemon([252,386]); 
+    if(select.value === "gen-4") fetchPokemon([387,493]); 
+    if(select.value === "gen-5") fetchPokemon([494,649]);
+    if(select.value === "gen-6") fetchPokemon([650,721]);
+    if(select.value === "gen-7") fetchPokemon([722,807]);
 }
 
 const getCurrentYear = () => {
