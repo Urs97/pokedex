@@ -16,22 +16,22 @@
             <i class="fas fa-bars fa-3x"></i>
         </div>
         <nav class="nav">
-            <a href="http://127.0.0.1:5500/index.html">
+            <a href="https://pokedex-app-urs.netlify.app">
                 <img src="./images/pokemon-title.png" alt="Pokemon logo" class="logo">
             </a>
             <div class="nav-links">
-                <a href="http://127.0.0.1:5500/index.html">Pokedex</a>
-                <a href="http://127.0.0.1:5500/about.html">About</a>
+                <a href="https://pokedex-app-urs.netlify.app">Pokedex</a>
+                <a href="https://pokedex-app-urs.netlify.app/about">About</a>
             </div>
         </nav>
         <section class="form-section">
             <form class="filter-form">
-                <input type="text" for="submit" id="filter-input" placeholder="Filter Pokemon">
-                <button type="submit" id="submit" onClick="filterPokemon()"><i class="fas fa-search"></i></button>
+                <input type="text" for="filter-btn" id="filter-input" placeholder="Filter Pokemon">
+                <button id="filter-btn" onclick="filterPokemon()"><i class="fas fa-search"></i></button>
             </form>
             <form class="select-form">
                 <label for="select-generation">Select region:</label>
-                <select name="select Generation" id="select-generation" onchange="selectGeneration()">
+                <select name="select generation" id="select-generation" onchange="selectGeneration()">
                     <option value="gen-1">Kanto / Generation 1</option>
                     <option value="gen-2">Johto / Generation 2</option>
                     <option value="gen-3">Hoenn / Generation 3</option>
