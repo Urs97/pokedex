@@ -11,19 +11,22 @@
     <script src="script.js" defer></script>
 </head>
 <body>    
-    <div class="wrapper">
-        <div class="nav-menu" onclick="toggleNavMenu()">
-            <i class="fas fa-bars fa-3x"></i>
-        </div>
-        <nav class="nav">
-            <a href="https://pokedex-app-urs.netlify.app">
-                <img src="./images/pokemon-title.png" alt="Pokemon logo" class="logo">
-            </a>
-            <div class="nav-links">
-                <a href="https://pokedex-app-urs.netlify.app">Pokedex</a>
-                <a href="https://pokedex-app-urs.netlify.app/about">About</a>
-            </div>
-        </nav>
+    <section class="wrapper">
+        <header>
+            <section class="nav-menu" onclick="toggleNavMenu()">
+                <i class="fas fa-bars fa-3x"></i>
+            </section>
+            <nav class="nav">
+                <a href="https://pokedex-app-urs.netlify.app">
+                    <img src="./images/pokemon-title.png" alt="Pokemon logo" class="logo">
+                </a>
+                <section class="nav-links">
+                    <a href="https://pokedex-app-urs.netlify.app">Pokedex</a>
+                    <a href="https://pokedex-app-urs.netlify.app/about">About</a>
+                </section>
+            </nav>
+        </header>
+        <main>
         <section class="form-section">
             <form class="filter-form">
                 <input type="text" for="filter-btn" id="filter-input" placeholder="Filter Pokemon">
@@ -42,13 +45,14 @@
                 </select>
             </form>
         </section>
-        <main id="pokedex"></main>
+        <section id="pokedex"></section>
+        </main>
         <footer class="footer">
             <p>An open source site made with help from Pokeapi.</p>
             <p>Pokémon and all respective names are trademark & &copy; of Nintendo, Game Freak, and The Pokémon Company.</p>
             <br>
             <p>&copy; Pokedex app <span id="current-year"></span></p>
         </footer>
-    </div>
+    </section>
 </body>
 </html>
