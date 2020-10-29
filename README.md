@@ -23,11 +23,9 @@ Project was created with all the latest web development trends in mind, featurin
 
 -  <a href="https://necolas.github.io/normalize.css/" target="_blank" rel="noopener noreferrer">normalize.css</a>
 
-## License & Copyright
+## License
 
-Distributed under the MIT License. See LICENSE for more information.
-
-Copyright (c) 2020 Urs97
+Distributed under the <a href="https://github.com/Urs97/pokedex/blob/master/LICENSE.txt" target="_blank" rel="noopener noreferrer">MIT License</a>. See LICENSE for more information.
 
 ## Contact 
 
