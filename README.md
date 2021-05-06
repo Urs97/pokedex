@@ -29,7 +29,7 @@ Distributed under the <a href="https://github.com/Urs97/pokedex/blob/master/LICE
 
 ## Contact 
 
-Email - <a href="https://necolas.github.io/normalize.css/" target="_blank" rel="noopener noreferrer">Email</a>
+Email - <a href="stipec.urs2@gmail.com" target="_blank" rel="noopener noreferrer">stipec.urs2@gmail.com</a>
 
 Github - <a href="https://github.com/Urs97/" target="_blank" rel="noopener noreferrer">https://github.com/Urs97</a>
 
